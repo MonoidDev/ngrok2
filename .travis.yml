@@ -1,7 +1,6 @@
 language: go
 sudo: false
 
-install: true
 go: 
     - 1.9.x
     - 1.10.x
@@ -12,5 +11,8 @@ matrix:
     allow_failures:
         - go: tip
 
+before_install:
+    - go get -i github.com/jteeuwen/go-bindata/go-bindata
+
 script:
-    make release-all
+    - make release-all
