@@ -6,7 +6,7 @@ GENERATED := pkg/client/assets/assets.go pkg/server/assets/assets.go
 
 default: all
 
-deps: bindata
+deps:
 	go mod tidy
 
 server: deps
