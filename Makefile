@@ -38,9 +38,9 @@ release-client: client
 release-server: TAGS=release
 release-server: server
 
-release-all: fmt release-client release-server
+release-all: release-client release-server
 
-all: fmt client server
+all: client server
 
 clean:
 	go clean -r github.com/traefix/ngrok2/...
