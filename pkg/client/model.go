@@ -271,7 +271,7 @@ func (c *ClientModel) control() {
 	for _, config := range c.tunnelConfig {
 		// create the protocol list to ask for
 		var protocols []string
-		for proto, _ := range config.Protocols {
+		for proto := range config.Protocols {
 			protocols = append(protocols, proto)
 		}
 

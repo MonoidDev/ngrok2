@@ -415,20 +415,20 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"assets/client/page.html": assetsClientPageHtml,
-	"assets/client/static/css/bootstrap.min.css": assetsClientStaticCssBootstrapMinCss,
-	"assets/client/static/css/highlight.min.css": assetsClientStaticCssHighlightMinCss,
+	"assets/client/page.html":                           assetsClientPageHtml,
+	"assets/client/static/css/bootstrap.min.css":        assetsClientStaticCssBootstrapMinCss,
+	"assets/client/static/css/highlight.min.css":        assetsClientStaticCssHighlightMinCss,
 	"assets/client/static/img/glyphicons-halflings.png": assetsClientStaticImgGlyphiconsHalflingsPng,
-	"assets/client/static/js/angular-sanitize.min.js": assetsClientStaticJsAngularSanitizeMinJs,
-	"assets/client/static/js/angular.js": assetsClientStaticJsAngularJs,
-	"assets/client/static/js/base64.js": assetsClientStaticJsBase64Js,
-	"assets/client/static/js/highlight.min.js": assetsClientStaticJsHighlightMinJs,
-	"assets/client/static/js/jquery-1.9.1.min.js": assetsClientStaticJsJquery191MinJs,
-	"assets/client/static/js/jquery.timeago.js": assetsClientStaticJsJqueryTimeagoJs,
-	"assets/client/static/js/ngrok.js": assetsClientStaticJsNgrokJs,
-	"assets/client/static/js/vkbeautify.js": assetsClientStaticJsVkbeautifyJs,
-	"assets/client/tls/ngrokroot.crt": assetsClientTlsNgrokrootCrt,
-	"assets/client/tls/snakeoilca.crt": assetsClientTlsSnakeoilcaCrt,
+	"assets/client/static/js/angular-sanitize.min.js":   assetsClientStaticJsAngularSanitizeMinJs,
+	"assets/client/static/js/angular.js":                assetsClientStaticJsAngularJs,
+	"assets/client/static/js/base64.js":                 assetsClientStaticJsBase64Js,
+	"assets/client/static/js/highlight.min.js":          assetsClientStaticJsHighlightMinJs,
+	"assets/client/static/js/jquery-1.9.1.min.js":       assetsClientStaticJsJquery191MinJs,
+	"assets/client/static/js/jquery.timeago.js":         assetsClientStaticJsJqueryTimeagoJs,
+	"assets/client/static/js/ngrok.js":                  assetsClientStaticJsNgrokJs,
+	"assets/client/static/js/vkbeautify.js":             assetsClientStaticJsVkbeautifyJs,
+	"assets/client/tls/ngrokroot.crt":                   assetsClientTlsNgrokrootCrt,
+	"assets/client/tls/snakeoilca.crt":                  assetsClientTlsSnakeoilcaCrt,
 }
 
 // AssetDir returns the file names below a certain
@@ -470,32 +470,33 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
+
 var _bintree = &bintree{nil, map[string]*bintree{
-	"assets": &bintree{nil, map[string]*bintree{
-		"client": &bintree{nil, map[string]*bintree{
-			"page.html": &bintree{assetsClientPageHtml, map[string]*bintree{}},
-			"static": &bintree{nil, map[string]*bintree{
-				"css": &bintree{nil, map[string]*bintree{
-					"bootstrap.min.css": &bintree{assetsClientStaticCssBootstrapMinCss, map[string]*bintree{}},
-					"highlight.min.css": &bintree{assetsClientStaticCssHighlightMinCss, map[string]*bintree{}},
+	"assets": {nil, map[string]*bintree{
+		"client": {nil, map[string]*bintree{
+			"page.html": {assetsClientPageHtml, map[string]*bintree{}},
+			"static": {nil, map[string]*bintree{
+				"css": {nil, map[string]*bintree{
+					"bootstrap.min.css": {assetsClientStaticCssBootstrapMinCss, map[string]*bintree{}},
+					"highlight.min.css": {assetsClientStaticCssHighlightMinCss, map[string]*bintree{}},
 				}},
-				"img": &bintree{nil, map[string]*bintree{
-					"glyphicons-halflings.png": &bintree{assetsClientStaticImgGlyphiconsHalflingsPng, map[string]*bintree{}},
+				"img": {nil, map[string]*bintree{
+					"glyphicons-halflings.png": {assetsClientStaticImgGlyphiconsHalflingsPng, map[string]*bintree{}},
 				}},
-				"js": &bintree{nil, map[string]*bintree{
-					"angular-sanitize.min.js": &bintree{assetsClientStaticJsAngularSanitizeMinJs, map[string]*bintree{}},
-					"angular.js": &bintree{assetsClientStaticJsAngularJs, map[string]*bintree{}},
-					"base64.js": &bintree{assetsClientStaticJsBase64Js, map[string]*bintree{}},
-					"highlight.min.js": &bintree{assetsClientStaticJsHighlightMinJs, map[string]*bintree{}},
-					"jquery-1.9.1.min.js": &bintree{assetsClientStaticJsJquery191MinJs, map[string]*bintree{}},
-					"jquery.timeago.js": &bintree{assetsClientStaticJsJqueryTimeagoJs, map[string]*bintree{}},
-					"ngrok.js": &bintree{assetsClientStaticJsNgrokJs, map[string]*bintree{}},
-					"vkbeautify.js": &bintree{assetsClientStaticJsVkbeautifyJs, map[string]*bintree{}},
+				"js": {nil, map[string]*bintree{
+					"angular-sanitize.min.js": {assetsClientStaticJsAngularSanitizeMinJs, map[string]*bintree{}},
+					"angular.js":              {assetsClientStaticJsAngularJs, map[string]*bintree{}},
+					"base64.js":               {assetsClientStaticJsBase64Js, map[string]*bintree{}},
+					"highlight.min.js":        {assetsClientStaticJsHighlightMinJs, map[string]*bintree{}},
+					"jquery-1.9.1.min.js":     {assetsClientStaticJsJquery191MinJs, map[string]*bintree{}},
+					"jquery.timeago.js":       {assetsClientStaticJsJqueryTimeagoJs, map[string]*bintree{}},
+					"ngrok.js":                {assetsClientStaticJsNgrokJs, map[string]*bintree{}},
+					"vkbeautify.js":           {assetsClientStaticJsVkbeautifyJs, map[string]*bintree{}},
 				}},
 			}},
-			"tls": &bintree{nil, map[string]*bintree{
-				"ngrokroot.crt": &bintree{assetsClientTlsNgrokrootCrt, map[string]*bintree{}},
-				"snakeoilca.crt": &bintree{assetsClientTlsSnakeoilcaCrt, map[string]*bintree{}},
+			"tls": {nil, map[string]*bintree{
+				"ngrokroot.crt":  {assetsClientTlsNgrokrootCrt, map[string]*bintree{}},
+				"snakeoilca.crt": {assetsClientTlsSnakeoilcaCrt, map[string]*bintree{}},
 			}},
 		}},
 	}},
@@ -547,4 +548,3 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
-

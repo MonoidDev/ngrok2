@@ -7,7 +7,7 @@ GENERATED := pkg/client/assets/assets.go pkg/server/assets/assets.go
 default: all
 
 deps:
-	go mod tidy
+	go get  -tags '$(TAGS)' ./...
 
 server: deps
 	go build -tags '$(TAGS)' github.com/traefix/ngrok2/cmd/nrklet
@@ -19,6 +19,7 @@ client: deps
 	go build -tags '$(TAGS)' github.com/traefix/ngrok2/cmd/nrk
 
 bindata: $(GENERATED)
+	gofmt -s -w pkg/client/assets pkg/server/assets
 
 pkg/client/assets/assets.go: $(DATA_FILES)
 	rm -rf pkg/client/assets/

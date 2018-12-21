@@ -59,7 +59,7 @@ func LoadConfiguration(opts *Options) (config *Configuration, err error) {
 	}
 
 	// try to parse the old .ngrok format for backwards compatibility
-	matched := false
+	var matched bool
 	content := strings.TrimSpace(string(configBuf))
 	if matched, err = regexp.MatchString("^[0-9a-zA-Z_\\-!]+$", content); err != nil {
 		return
@@ -162,7 +162,7 @@ func LoadConfiguration(opts *Options) (config *Configuration, err error) {
 
 	// list tunnels
 	case "list":
-		for name, _ := range config.Tunnels {
+		for name := range config.Tunnels {
 			fmt.Println(name)
 		}
 		os.Exit(0)
@@ -184,7 +184,7 @@ func LoadConfiguration(opts *Options) (config *Configuration, err error) {
 			}
 		}
 
-		for name, _ := range config.Tunnels {
+		for name := range config.Tunnels {
 			if !requestedTunnels[name] {
 				delete(config.Tunnels, name)
 			}
