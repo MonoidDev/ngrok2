@@ -1,5 +1,5 @@
 [![Build
-status](https://travis-ci.org/traefix/ngrok2.svg)](https://travis-ci.org/traefix/ngrok2)
+status](https://travis-ci.com/traefix/ngrok2.svg?branch=maste)](https://travis-ci.com/traefix/ngrok2)
 
 # ngrok - Introspected tunnels to localhost
 ### ”I want to expose a local server behind a NAT or firewall to the internet.”
