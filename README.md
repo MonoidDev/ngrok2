@@ -9,12 +9,13 @@ status](https://travis-ci.org/inconshreveable/ngrok.svg)](https://travis-ci.org/
 ngrok is a reverse proxy that creates a secure tunnel from a public endpoint to a locally running web service.
 ngrok captures and analyzes all traffic over the tunnel for later inspection and replay.
 
-## ngrok 2.x
+## ngrok2
 
-ngrok 2.x is the successor to 1.x and the focus of all current development effort. Its source code is not available.
+ngrok2 is the successor to 1.x and the focus of all current development effort.
 
-**NOTE** This repository contains the code for ngrok 1.x.
-
+**NOTE** This repository contains the code forked from [ngrok](https://github.com/inconshreveable/ngrok) 1.x.
+I like this project but ngrok's development is not active very long time, so forked to be a new repository
+to continue develop.
 ## Status of the ngrok 1.x project
 
 ngrok 1.x is no longer developed, supported or maintained by its author, except to ensure that the project continues to compile. The contribution policy has the following guidelines:
