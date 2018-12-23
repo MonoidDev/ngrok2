@@ -2,6 +2,8 @@ language: go
 sudo: false
 
 go:
+    - 1.9.x
+    - 1.10.x
     - 1.11.x
     - tip
 
@@ -9,15 +11,20 @@ matrix:
     allow_failures:
         - go: tip
     fast_finish: true
+    include:
+        - go: 1.11.x
+          env: GO111MODULE=on
+        - go: tip
+          env: GO111MODULE=on
 
 install:
     - GO111MODULE=off go get golang.org/x/lint/golint
     - GO111MODULE=off go get github.com/alecthomas/gometalinter
 
 script:
-    - GO111MODULE=on gometalinter --install
-    - GO111MODULE=on gometalinter --disable-all -E vet -E gofmt -E misspell -E ineffassign -E goimports -E deadcode --tests ./...
-    - GO111MODULE=on make release-all
+    - gometalinter --install
+    - gometalinter --disable-all -E vet -E gofmt -E misspell -E ineffassign -E goimports -E deadcode --tests ./...
+    - make release-all
 
-# after_script:
-#    - GO111MODULE=on golint ./...
+after_script:
+   - GO111MODULE=on golint ./...
