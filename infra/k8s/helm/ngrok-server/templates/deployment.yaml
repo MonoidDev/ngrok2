@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (a9d05d509)
+  name: ngrok-server
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ngrok-server
+  template:
+    metadata:
+      labels:
+        app: ngrok-server
+    spec:
+      containers:
+        - name: ngrok-server
+          image: pixiunextterminal.azurecr.io/monoid/ngrok-server:latest
+          args:
+            - -tlsKey=/etc/tls/tls.key
+            - -tlsCrt=/etc/tls/tls.crt
+            # TODO: domain
+            - -domain=52.185.130.52
+            # - -domain=ngrok.monoid.jp
+            # On Linux, only root user can access port 80, so we need to change it
+            - -httpAddr=:8964
+            - -httpsAddr=:8965
+          # Always pull the image since the tag is `latest`
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: tls
+              mountPath: /etc/tls
+              readOnly: true
+      volumes:
+        - name: tls
+          secret:
+            secretName: ngrok-server-tls
+      restartPolicy: Always

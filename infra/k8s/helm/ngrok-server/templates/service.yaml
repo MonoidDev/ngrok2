@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-resource-group: MC_next-terminal-aks_next-terminal-aks_japaneast
+    # TODO: use pixiu-proxy-public-ip or build its own?
+    service.beta.kubernetes.io/azure-pip-name: pixiu-proxy-public-ip
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (a9d05d509)
+  labels:
+    io.kompose.service: ngrok-server
+  name: ngrok-server
+  namespace: {{ .Values.namespace }}
+spec:
+  type: LoadBalancer
+  ports:
+    - name: "ngrok-server-port-80"
+      port: 80
+      targetPort: 8964
+    - name: "ngrok-server-port-443"
+      port: 443
+      targetPort: 8965
+    - name: "ngrok-server-port-4443"
+      port: 4443
+      targetPort: 4443
+  selector:
+    app: ngrok-server # The same as Deploy labels
