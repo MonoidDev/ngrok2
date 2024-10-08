@@ -30,13 +30,13 @@ You'll run the server with the following command.
 ngrok only makes TLS-encrypted connections. When you run ngrokd, you'll need to instruct it
 where to find your TLS certificate and private key. Specify the paths with the following switches:
 
-	-tlsKey="/path/to/tls.key" -tlsCrt="/path/to/tls.crt"
+    -tlsKey="/path/to/tls.key" -tlsCrt="/path/to/tls.crt"
 
 ### Setting the server's domain
 When you run your own ngrokd server, you need to tell ngrokd the domain it's running on so that it
 knows what URLs to issue to clients.
 
-	-domain="example.com"
+    -domain="example.com"
 
 ## 5. Configure the client
 In order to connect with a client, you'll need to set two options in ngrok's configuration file.
@@ -44,9 +44,9 @@ The ngrok configuration file is a simple YAML file that is read from ~/.ngrok by
 a custom configuration file path with the -config switch. Your config file must contain the following two
 options.
 
-	server_addr: example.com:4443
-	trust_host_root_certs: true
-	use_insecure_skip_verify: false
+    server_addr: example.com:4443
+    trust_host_root_certs: true
+    use_insecure_skip_verify: false
 
 Substitute the address of your ngrokd server for "example.com:4443". The "trust_host_root_certs" parameter instructs
 ngrok to trust the root certificates on your computer when establishing TLS connections to the server. By default, ngrok
@@ -63,7 +63,7 @@ If you do choose to use a self-signed cert, please note that you must either rem
 trust_host_root_certs or set it to false:
 
     trust_host_root_certs: false
-	use_insecure_skip_verify: true
+    use_insecure_skip_verify: true
 
 Special thanks @kk86bioinfo, @lyoshenka and everyone in the thread https://github.com/inconshreveable/ngrok/issues/84 for help in writing up instructions on how to do it:
 
