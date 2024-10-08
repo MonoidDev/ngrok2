@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ngrok-server-tls
+  namespace: {{ .Values.namespace }}
+spec:
+  secretName: ngrok-server-tls
+  privateKey:
+    rotationPolicy: Always
+  commonName: monoid.jp
+  dnsNames:
+    - monoid.jp
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+  issuerRef:
+    name: ngrok-server-tls-self-signed
+    kind: ClusterIssuer
