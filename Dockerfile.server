@@ -1,0 +1,39 @@
+# Source: https://docs.docker.com/language/golang/build-images/
+
+##### Stage 1: Build the application #####
+# `platform=linux/amd64` to avoid exec format error: https://stackoverflow.com/a/73285704
+FROM --platform=linux/amd64 golang:1.22 AS builder
+
+WORKDIR /app
+
+# Install make
+RUN apt-get update && apt-get -y install make
+
+# Download Go modules
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy the source code
+COPY . .
+
+# RUN CGO_ENABLED=0 GOOS=linux go build -tags 'release' github.com/traefix/ngrok2/cmd/nrklet
+RUN make server
+
+
+##### Stage 2: Run the application #####
+# `platform=linux/amd64` to avoid exec format error: https://stackoverflow.com/a/73285704
+FROM --platform=linux/amd64 ubuntu:22.04
+
+WORKDIR /app
+
+# Copy the binary from the build stage
+COPY --from=builder /app/nrklet .
+
+EXPOSE 80
+EXPOSE 443
+EXPOSE 4443
+
+RUN addgroup --system app && adduser --system --group app
+USER app:app
+
+ENTRYPOINT ["./nrklet"]
