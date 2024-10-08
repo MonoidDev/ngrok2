@@ -1,0 +1,7 @@
+server_addr: <NGROK_SERVER_SVC_IP>:4443
+trust_host_root_certs: true
+use_insecure_skip_verify: true
+tunnels:
+  test:
+    proto:
+      http: 3000
