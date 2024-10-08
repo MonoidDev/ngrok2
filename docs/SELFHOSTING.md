@@ -46,6 +46,7 @@ options.
 
 	server_addr: example.com:4443
 	trust_host_root_certs: true
+	use_insecure_skip_verify: false
 
 Substitute the address of your ngrokd server for "example.com:4443". The "trust_host_root_certs" parameter instructs
 ngrok to trust the root certificates on your computer when establishing TLS connections to the server. By default, ngrok
@@ -62,6 +63,7 @@ If you do choose to use a self-signed cert, please note that you must either rem
 trust_host_root_certs or set it to false:
 
     trust_host_root_certs: false
+	use_insecure_skip_verify: true
 
 Special thanks @kk86bioinfo, @lyoshenka and everyone in the thread https://github.com/inconshreveable/ngrok/issues/84 for help in writing up instructions on how to do it:
 

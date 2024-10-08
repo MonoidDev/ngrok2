@@ -3,6 +3,14 @@ package client
 import (
 	"crypto/tls"
 	"fmt"
+	"io/ioutil"
+	"math"
+	"net"
+	"runtime"
+	"strings"
+	"sync/atomic"
+	"time"
+
 	metrics "github.com/rcrowley/go-metrics"
 	"github.com/traefix/ngrok2/pkg/client/mvc"
 	"github.com/traefix/ngrok2/pkg/conn"
@@ -11,13 +19,6 @@ import (
 	"github.com/traefix/ngrok2/pkg/proto"
 	"github.com/traefix/ngrok2/pkg/util"
 	"github.com/traefix/ngrok2/version"
-	"io/ioutil"
-	"math"
-	"net"
-	"runtime"
-	"strings"
-	"sync/atomic"
-	"time"
 )
 
 const (
@@ -115,7 +116,11 @@ func newClientModel(config *Configuration, ctl mvc.Controller) *ClientModel {
 
 	// configure TLS SNI
 	m.tlsConfig.ServerName = serverName(m.serverAddr)
-	m.tlsConfig.InsecureSkipVerify = useInsecureSkipVerify()
+	if config.UseInsecureSkipVerify {
+		m.tlsConfig.InsecureSkipVerify = true
+	} else {
+		m.tlsConfig.InsecureSkipVerify = false
+	}
 
 	return m
 }

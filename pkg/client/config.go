@@ -2,8 +2,6 @@ package client
 
 import (
 	"fmt"
-	"github.com/traefix/ngrok2/pkg/log"
-	"gopkg.in/yaml.v1"
 	"io/ioutil"
 	"net"
 	"net/url"
@@ -13,17 +11,21 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/traefix/ngrok2/pkg/log"
+	"gopkg.in/yaml.v1"
 )
 
 type Configuration struct {
-	HttpProxy          string                          `yaml:"http_proxy,omitempty"`
-	ServerAddr         string                          `yaml:"server_addr,omitempty"`
-	InspectAddr        string                          `yaml:"inspect_addr,omitempty"`
-	TrustHostRootCerts bool                            `yaml:"trust_host_root_certs,omitempty"`
-	AuthToken          string                          `yaml:"auth_token,omitempty"`
-	Tunnels            map[string]*TunnelConfiguration `yaml:"tunnels,omitempty"`
-	LogTo              string                          `yaml:"-"`
-	Path               string                          `yaml:"-"`
+	HttpProxy             string                          `yaml:"http_proxy,omitempty"`
+	ServerAddr            string                          `yaml:"server_addr,omitempty"`
+	InspectAddr           string                          `yaml:"inspect_addr,omitempty"`
+	TrustHostRootCerts    bool                            `yaml:"trust_host_root_certs,omitempty"`
+	AuthToken             string                          `yaml:"auth_token,omitempty"`
+	Tunnels               map[string]*TunnelConfiguration `yaml:"tunnels,omitempty"`
+	LogTo                 string                          `yaml:"-"`
+	Path                  string                          `yaml:"-"`
+	UseInsecureSkipVerify bool                            `yaml:"use_insecure_skip_verify,omitempty"` // New field added
 }
 
 type TunnelConfiguration struct {
